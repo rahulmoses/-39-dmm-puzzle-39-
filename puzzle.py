@@ -45,12 +45,24 @@ def already_played(name):
     return row is not None
 
 # ── PUZZLE DATA (verified solution, CP4 = last cell) ───────
-GRID = [[1]*6 for _ in range(5)]
-ROWS, COLS, TOTAL, MAX_CP = 5, 6, 30, 4
-CPS = {1: (4,0), 2: (2,5), 3: (0,5), 4: (1,0)}
-SOLUTION = [(4,0),(3,0),(2,0),(2,1),(3,1),(4,1),(4,2),(3,2),(2,2),(2,3),(3,3),(4,3),
-            (4,4),(4,5),(3,5),(3,4),(2,4),(2,5),(1,5),(0,5),(0,4),(1,4),(1,3),(0,3),
-            (0,2),(1,2),(1,1),(0,1),(0,0),(1,0)]
+GRID = [
+    [1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1],
+    [1,1,0,0,0,0,0,0],
+    [1,1,1,1,1,1,0,0],
+    [1,1,1,1,1,1,0,0],
+    [1,1,0,0,0,0,0,0],
+    [1,1,1,1,1,1,1,1],
+    [1,1,1,1,1,1,1,1],
+    [1,1,0,0,0,0,0,0],
+]
+ROWS, COLS, TOTAL, MAX_CP = 9, 8, 50, 6
+CPS = {1:(0,0), 2:(7,1), 3:(6,4), 4:(4,5), 5:(1,3), 6:(0,7)}
+SOLUTION = [(0,0),(1,0),(2,0),(3,0),(4,0),(5,0),(6,0),(7,0),(8,0),(8,1),
+            (7,1),(7,2),(7,3),(7,4),(7,5),(7,6),(7,7),(6,7),(6,6),(6,5),
+            (6,4),(6,3),(6,2),(6,1),(5,1),(4,1),(4,2),(4,3),(4,4),(4,5),
+            (3,5),(3,4),(3,3),(3,2),(3,1),(2,1),(1,1),(0,1),(0,2),(1,2),
+            (1,3),(0,3),(0,4),(1,4),(1,5),(0,5),(0,6),(1,6),(1,7),(0,7)]
 
 def cp_at(r, c):
     for n, (pr, pc) in CPS.items():
@@ -166,8 +178,8 @@ div[data-testid="stButton"] > button[kind="primary"] {
 # SCREEN 1: NAME ENTRY
 # ══════════════════════════════════════════════════════════════
 if st.session_state.screen == "name":
-    st.title("🧩 DMM Puzzle Challenge")
-    st.markdown("Connect **1 → 2 → 3 → 4** in order and cover all 30 cells to win!")
+    st.title("🧩 DMM Puzzle Challenge 🔴 Hard")
+    st.markdown("E-shaped grid · Connect **1 → 2 → 3 → 4 → 5 → 6** in order · cover all **50 cells** · checkpoint 6 is the last move!")
     st.divider()
 
     name = st.text_input("Enter your name to begin:", placeholder="Your name here...")
