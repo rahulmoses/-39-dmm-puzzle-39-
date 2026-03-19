@@ -33,7 +33,7 @@ def save_score(name, moves, seconds):
 def get_leaderboard():
     conn = get_db()
     rows = conn.execute(
-        "SELECT name, moves, seconds, completed_at FROM leaderboard ORDER BY seconds ASC LIMIT 50"
+        "SELECT name, moves, seconds, completed_at FROM leaderboard ORDER BY seconds ASC LIMIT 150"
     ).fetchall()
     conn.close()
     return rows
